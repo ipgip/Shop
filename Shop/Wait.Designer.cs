@@ -51,6 +51,7 @@
             this.ClientSize = new System.Drawing.Size(827, 50);
             this.ControlBox = false;
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Wait";

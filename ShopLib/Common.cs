@@ -63,10 +63,13 @@ namespace HBC.ShopLib
             decimal Discount = 0m;
             dynamic q = Base.NewObject("Query");
             q.Text =
-                "select	ЕСТЬNULL(sum(ПроцентСкидкиНаценки), 0) as Discount " +
-                "from РегистрСведений.СкидкиНаценкиНоменклатуры.СрезПоследних " +
-                $"where Номенклатура.Код = \"{code}\" " +
-                "and Активность ";
+            "select ЕстьNull(sum(ПроцентСкидкиНаценки),0) as Discount " +
+            "from  РегистрСведений.СкидкиНаценкиНоменклатуры " +
+            $"where Номенклатура.Код = \"{code}\" " +
+            "   and Активность " +
+            "	and ДатаОкончания >= &Date " +
+            "   and Условие = Значение(Перечисление.УсловияСкидкиНаценки.ПоКоличествуТовара) ";
+            q.УстановитьПараметр("Date", DateTime.Today);
             dynamic r = q.Execute().Select();
             if (r.next())
             {

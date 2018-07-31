@@ -21,5 +21,11 @@ namespace Shop
         {
             label1.Text = Text;
         }
+
+        public void SetText(string T)
+        {
+            Text = T;
+            label1.Text = T;
+        }
     }
 }

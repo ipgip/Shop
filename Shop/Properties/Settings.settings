@@ -36,7 +36,7 @@
       <Value Profile="(Default)">\\server2\Temp\pictures1\</Value>
     </Setting>
     <Setting Name="Splash" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+      <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>
 </SettingsFile>

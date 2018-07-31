@@ -18,6 +18,7 @@ namespace Shop
         List<Goods> GoodsList = null;
         private StringBuilder buf = new StringBuilder();
         Splash SplashForm = null;
+        Wait WaitForm = null;
 
         public Form1()
         {
@@ -156,18 +157,35 @@ namespace Shop
 
         public void DisplayGoodsByBarcode(string Barcode)
         {
+            WaitForm = new Wait() { Text = $"Ищем по штрихкоду {Barcode}" };
+            WaitForm.Show();
+
             string Code = Common.FindCodeByBarcode(Barcode);
+
             if (Code != string.Empty)
             {
                 List<Goods> G = Common.FindGoods(Code);
                 if (G.Count() > 0)
                     DisplayOneGoods(G.First());
+                else
+                {
+                    WaitForm.SetText("Товар не найден!");
+                    timer1.Interval=3000;
+                    timer1.Start();
+                }
             }
         }
 
         private void Form1_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
             GoodsPanel1_KeyPressed(sender, new StringEventArgs(((char)e.KeyCode).ToString()));
+        }
+
+        private void Timer1_Tick(object sender, EventArgs e)
+        {
+            WaitForm?.Close();
+            timer1.Stop();
+            button1.Focus();
         }
     }
 }
