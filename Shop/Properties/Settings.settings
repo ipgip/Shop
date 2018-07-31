@@ -1,0 +1,42 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Shop.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="CS" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Srvr="10.0.0.2";Ref="utrus_beckup";Usr="Admin";Pwd="9780100941";</Value>
+    </Setting>
+    <Setting Name="Organisation" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ИП Картавцев А.В.</Value>
+    </Setting>
+    <Setting Name="Warehouse" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Склад виртуальный(для приходов)</Value>
+    </Setting>
+    <Setting Name="Currency" Type="System.String" Scope="User">
+      <Value Profile="(Default)">руб</Value>
+    </Setting>
+    <Setting Name="CounterpartyName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Создано в электронном магазине</Value>
+    </Setting>
+    <Setting Name="CounterpartyPhone" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Телефон контрагента</Value>
+    </Setting>
+    <Setting Name="Bill" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Договор приобретения в электронном магазине</Value>
+    </Setting>
+    <Setting Name="Comment" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Заказ из электронного магазина</Value>
+    </Setting>
+    <Setting Name="Unit" Type="System.String" Scope="User">
+      <Value Profile="(Default)">шт</Value>
+    </Setting>
+    <Setting Name="PriceType" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Розничная</Value>
+    </Setting>
+    <Setting Name="Cache" Type="System.String" Scope="User">
+      <Value Profile="(Default)">\\server2\Temp\pictures1\</Value>
+    </Setting>
+    <Setting Name="Splash" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
