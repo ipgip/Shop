@@ -43,12 +43,13 @@ namespace Shop
             {
                 pictureBox1.Image = Image.FromFile(Filename);
             }
-            //pictureBox1.Image = Common.PictureFromBase64(G.MainImage);
+
             Title.Text = G.Title;
             Description.Text = G.Description;
-            //Description.Text = GetDescription(Base, G.Code);
-            Price.Text = G.Price.ToString("C2");
-            //Price.Text = GetPrice(Base, G.Code).ToString("C2");
+
+            decimal Discount = Common.GetDiscount(G.Code);
+            Price.Text = ((100 - Discount) / 100 * G.Price).ToString("C2");
+
             Cursor = Cursors.WaitCursor;
             flowLayoutPanel1.Visible = false;
             List<Image> p = GetAllPicturesforGoods(Base, G.Code);
@@ -105,20 +106,20 @@ namespace Shop
                         if (rr != null)
                         {
                             Image I = Common.PictureFromBase64(@base.Base64String(rr.GetBinaryData()));
-                            string Filename = Properties.Settings.Default.Cache + code  + "\\" + $"{count++}.jpg";
+                            string Filename = Properties.Settings.Default.Cache + code + "\\" + $"{count++}.jpg";
                             I.Save(Filename);
                             ret.Add(I);
                         }
                     }
-            }
+                }
                 else
                 {
-                foreach (string s in Directory.GetFiles(Properties.Settings.Default.Cache + code))
-                {
-                    ret.Add(Image.FromFile(s));
+                    foreach (string s in Directory.GetFiles(Properties.Settings.Default.Cache + code))
+                    {
+                        ret.Add(Image.FromFile(s));
+                    }
                 }
             }
-        }
             catch (Exception err)
             {
                 MessageBox.Show($"{err.Message}");
@@ -148,20 +149,6 @@ namespace Shop
             Hide();
             OrderBoxForm f = new OrderBoxForm() { WindowState = FormWindowState.Maximized/*, MdiParent = MdiParent*/ };
             DialogResult Result = f.ShowDialog();
-            //switch (Result)
-            //{
-            //    case DialogResult.OK:
-            //        MessageBox.Show("Печать чека? передача в 1С");
-            //        Common.CurrentOrder = null;
-            //        break;
-            //    case DialogResult.Cancel:
-            //        Common.CurrentOrder = null;
-            //        break;
-            //    case DialogResult.Retry:
-            //        break;
-            //    default:
-            //        break;
-            //}
             Order.Visible = (Common.CurrentOrder != null);
             DialogResult = Result;
         }

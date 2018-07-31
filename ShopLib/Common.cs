@@ -58,6 +58,23 @@ namespace HBC.ShopLib
             return summ;
         }
 
+        public static decimal GetDiscount(string code)
+        {
+            decimal Discount = 0m;
+            dynamic q = Base.NewObject("Query");
+            q.Text =
+                "select	ЕСТЬNULL(sum(ПроцентСкидкиНаценки), 0) as Discount " +
+                "from РегистрСведений.СкидкиНаценкиНоменклатуры.СрезПоследних " +
+                $"where Номенклатура.Код = \"{code}\" " +
+                "and Активность ";
+            dynamic r = q.Execute().Select();
+            if (r.next())
+            {
+                Discount = Convert.ToDecimal(r.Discount);
+            }
+            return Discount;
+        }
+
         public static List<OrderClass> NewOrder()
         {
             return new List<OrderClass>();
