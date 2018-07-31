@@ -166,7 +166,9 @@ namespace Shop
             {
                 List<Goods> G = Common.FindGoods(Code);
                 if (G.Count() > 0)
+                {
                     DisplayOneGoods(G.First());
+                }
                 else
                 {
                     WaitForm.SetText("Товар не найден!");
